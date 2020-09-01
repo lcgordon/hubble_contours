@@ -4,6 +4,9 @@ Produces contour plots from Hubble drizzle reduced files
 .. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
+.. image:: https://img.shields.io/badge/Made%20at-%23AstroHackWeek-8063d5.svg?style=flat
+    :target: 
+    :alt: AstroHackWeek2020 badge
 
 
 License
