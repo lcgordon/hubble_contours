@@ -10,6 +10,28 @@ Produces contour plots from Hubble drizzle reduced files
     :alt: AstroHackWeek2020 badge
 
 
+Installation
+------------
+
+.. code-block:: bash
+
+    $ git clone https://github.com/lcgordon/hubble_contours.git
+    $ cd astronify
+    $ pip install .
+
+For active development, install in develop mode
+
+.. code-block:: bash
+
+    $ pip install -e .
+
+To install without downloading the source code
+
+.. code-block:: bash
+
+    $ pip install git+https://github.com/lcgordon/hubble_contours.git
+ 
+          
 License
 -------
 
