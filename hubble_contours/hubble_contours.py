@@ -16,7 +16,6 @@ import shutil
 from astroquery.mast import Observations
 from astroquery.mast import Catalogs
 
-%matplotlib inline
 from pylab import *
 import matplotlib
 import matplotlib.pyplot as plt
@@ -39,7 +38,7 @@ from numpy import arange
 from time import sleep
 
 
-class contour_producer(object):
+class ContourProducer(object):
     """ documentation """
     
     def __init__(self, path = "./", RA_DEC_list="./ra_declist.csv"):
