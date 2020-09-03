@@ -126,13 +126,14 @@ class ContourProducer(object):
             print("created directory {}".format(imageDirName))
 
         output_imgs = []
+        output_fits = []
             
         for path_name in drz_files:
             hdulist = fits.open(path_name, memmap=False)
             hdu = hdulist[1]      
             wcs = WCS(hdu.header)
             pixCoords=SkyCoord([ra], [dec], frame='fk5', unit=u.deg).to_pixel(wcs=wcs, mode='all')
-
+            print(pixCoords)
             # getting the file name for the output image
             _, img_file = os.path.split(path_name)
             img_file = os.path.join(imageDirName, img_file.replace("fits","png"))
@@ -150,13 +151,34 @@ class ContourProducer(object):
                 plt.contour(hdu.data, levels=[.1,.5,1,4,7,10,20], cmap='cool', alpha=0.5)
             
                 pixCoords=np.concatenate(pixCoords)            #cropping image to only quasar
+                print(pixCoords)
+                print(pixCoords[0]-50, pixCoords[0] + 50)
+                self.playing = hdu.data
+                self.cropper = pixCoords
                 plt.xlim(pixCoords[0]-50, pixCoords[0]+50)
                 plt.ylim(pixCoords[1]-50, pixCoords[1]+50)
                 plt.savefig(fname=img_file, bbox_inches='tight')
                 plt.clf()
                 close()
+                
+                point = np.round(pixCoords)
+                xmin = int(point[0] - 55)
+                xmax = int(point[0] + 55)
+                ymin = int(point[1] - 55)
+                ymax = int(point[1] + 55)
+                cropped_fits_img = hdu.data[ymin:ymax, xmin:xmax]
+                
+                #img_file = os.path.join(imageDirName, img_file.replace("fits","png"))
+                _, fits_file = os.path.split(path_name)
+                fits_cropped = os.path.join(imageDirName, fits_file )
+                hdr = fits.Header() # >> make the header
+                hdr["RA"] = ra
+                hdr["DEC"] = dec
+                hdu = fits.PrimaryHDU(cropped_fits_img, header=hdr)
+                hdu.writeto(fits_cropped)
 
                 output_imgs.append(img_file)
+                output_fits.append(fits_cropped)
                            
             else:
                 if verbose:
@@ -165,6 +187,7 @@ class ContourProducer(object):
             hdulist.close()
 
         return output_imgs
+    
 
             
     def clean_download_dir(self):
