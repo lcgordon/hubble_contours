@@ -16,7 +16,7 @@ Installation
 .. code-block:: bash
 
     $ git clone https://github.com/lcgordon/hubble_contours.git
-    $ cd astronify
+    $ cd hubble_contours
     $ pip install .
 
 For active development, install in develop mode
