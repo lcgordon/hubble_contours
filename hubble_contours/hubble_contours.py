@@ -133,7 +133,7 @@ class ContourProducer(object):
             hdu = hdulist[1]      
             wcs = WCS(hdu.header)
             pixCoords=SkyCoord([ra], [dec], frame='fk5', unit=u.deg).to_pixel(wcs=wcs, mode='all')
-            print(pixCoords)
+
             # getting the file name for the output image
             _, img_file = os.path.split(path_name)
             img_file = os.path.join(imageDirName, img_file.replace("fits","png"))
@@ -151,10 +151,6 @@ class ContourProducer(object):
                 plt.contour(hdu.data, levels=[.1,.5,1,4,7,10,20], cmap='cool', alpha=0.5)
             
                 pixCoords=np.concatenate(pixCoords)            #cropping image to only quasar
-                print(pixCoords)
-                print(pixCoords[0]-50, pixCoords[0] + 50)
-                self.playing = hdu.data
-                self.cropper = pixCoords
                 plt.xlim(pixCoords[0]-50, pixCoords[0]+50)
                 plt.ylim(pixCoords[1]-50, pixCoords[1]+50)
                 plt.savefig(fname=img_file, bbox_inches='tight')
@@ -186,7 +182,7 @@ class ContourProducer(object):
                         
             hdulist.close()
 
-        return output_imgs
+        return output_imgs, output_fits
     
 
             
