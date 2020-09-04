@@ -12,7 +12,7 @@ Hubble Contours
 
 Creates contour plots (.png) and a .fits file containing the same cropped chunk of the original data from Hubble drizzle reduced files given an input list of RA/DECs. 
 
-For usage, see the Jupyter notebook `Basic_Usage.ipynb <tutorials/Basic_Usage.ipynb>`_ in the tutorials folder.
+For usage, see the Jupyter notebook `Basic_Usage.ipynb <https://nbviewer.jupyter.org/github/lcgordon/hubble_contours/blob/main/tutorial/Basic_Usage.ipynb>`_ in the tutorial folder.
 
 
 Installation
