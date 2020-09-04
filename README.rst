@@ -1,5 +1,8 @@
-Produces contour plots from Hubble drizzle reduced files
+hubble_contours
 --------------------------------------------------------
+
+Creates contour plots (.png) and a .fits file containing the same cropped chunk of the original data from Hubble drizzle reduced files given an input list of RA/DECs. 
+For usage, see the Jupyter notebook Basic_Usage.ipynb in the tutorials folder.
 
 .. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
     :target: http://www.astropy.org
